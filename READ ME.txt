@@ -1,0 +1,12 @@
+In R/qtl, A and H are the genotype codes for a backcross (BC):
+A = AA — homozygous genotype (inherited the same allele from both parents)
+H = AB` (heterozygous) — inherited different alleles from each parent
+In a backcross, you cross two inbred lines (P1 × P2) to get F1 hybrids, then cross F1 back to one of the parents. 
+Each offspring can only be one of two genotypes at any marker — either homozygous (AA) or heterozygous (AB) — which is why there are only two codes.
+
+R/qtl uses single-letter codes to keep the file compact:
+CodeGenotypeMeaningAAAHomozygous — like parent 1HABHeterozygous — like F1
+
+If you were working with an intercross (F2) instead of a backcross, you would see a third code:
+CodeGenotypeMeaningAAAHomozygous parent 1HABHeterozygousBBBHomozygous parent 2
+Since our simulated data is a backcross, only A and H appear. That's why read.cross() needs genotypes = c("A", "H") — so it knows how to interpret those codes correctly.
